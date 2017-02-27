@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block 'title'%}Nasa{%endblock%}
+	{%block 'content'%}
+		<!-- Se agrega filtro a etiqueta Django -->
+		{%comment%}
+			{{publicaciones.Nombre| upper}}
+			<p>{{publicaciones.Edad | default:"No tiene"}}</p>
+			<p>{{publicaciones.Fecha}}</p>
+			<p>Longitud de Nombre: {{publicaciones.Nombre|length}}</p>
+		{%endcomment%}
+
+		{%comment%}
+		{% for publicacion in publicaciones %}
+			Publicacion: {{publicacion.Nombre}}
+			<br>
+			Rating: {{publicacion.Ratings}}
+			<br>
+			<br>
+		{%endfor%}
+		{%endcomment%}
+		
+		<!-- Ejemplo de for's anidados -->
+		<p>Ejemplo de For anidados:</p>
+		{% for publicacion in publicaciones %}
+			{% for key, value in publicacion.items %}
+				{{key}}:{{value}}
+				<br>
+			{%endfor%}
+				<br>
+				<hr>
+		{%endfor%}
+
+		<!-- Ejemplo de for's e ifanidados -->
+		<p>Ejemplo de For anidados con IF:</p>
+		<p>Ejemplo de For anidados con IF:</p>
+		<p>Ejemplo de For anidados con IF:</p>
+		
+		{% for publicacion in publicaciones %}
+			{% for key, value in publicacion.items %}
+				{% if key == "Rating" and value <= 2 %}
+					<h3>Menos Destacados </h3>
+					{{key}}:{{value}}
+				{%endif%}
+				{{key}}:{{value}}
+				<br>
+			{%endfor%}
+				<br>
+				<hr>
+		{%endfor%}	
+
+		<a href="{% url "Publicaciones:add-publicaciones" %}">Agregar Publicaci&oacute;</a>
+	{%endblock%}

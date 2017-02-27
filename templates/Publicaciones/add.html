@@ -1,0 +1,46 @@
+{% extends 'base.html'%}
+{% block 'title' %}Publicaciones|add{%endblock%}
+{% block 'content'%}
+	<form class="col s12" action="{% url 'Publicaciones:add-publicaciones' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6">
+          <input  id="Nombre" type="text" name="nombre" class="validate">
+          <label for="first_name">Nombre</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <textarea   type="text" name="contenido" class="validate"></textarea>
+          <label for="first_name">Contenido</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <select class="" name="tag">
+            <option value="" selected>--Seleciona opcion---</option>
+          {%for key, value in tags.items%}
+            <option value="{{key}}">{{value}}</option>
+          {%endfor%}  
+          </select>
+          <label for="first_name">TAGS</label>
+        </div>
+      </div>
+      	<div class="row">
+	        <div class="input-field col s6">
+	          <input name="imagen" id="" type="file" class="validate">
+	          <label for="first_name">Imagen</label>
+	        </div>
+     	</div>
+	  <input type="submit" name="" value="Enviar"></input>
+	</form>
+
+
+{%endblock%}
+{%block 'scripts'%}
+<script type="text/javascript">
+	$(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+{%endblock%}

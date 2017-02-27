@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block 'title'%}Signup{%endblock%}
+
+  {%block 'content'%}
+<div class="row">
+<form class="col s12" action="{% url 'Home:Signup' %}" method="POST">
+  {% csrf_token %}
+ <div class="row">
+   <div class="input-field col s6">
+     <input  id="first_name" type="text" class="validate" name="first_name">
+     <label for="first_name">Nombre</label>
+   </div>
+   <div class="input-field col s6">
+     <input id="last_name" type="text" class="validate" name="last_name">
+     <label for="last_name">Apellido</label>
+   </div>
+ </div>
+ <div class="row">
+   <div class="input-field col s12">
+     <input id="username" type="text" class="validate" name="username">
+     <label for="username">Username</label>
+   </div>
+ </div>
+ <div class="row">
+   <div class="input-field col s12">
+     <input id="password" type="password" class="validate" name="password">
+     <label for="password">Password</label>
+   </div>
+ </div>
+ <div class="row">
+   <div class="input-field col s12">
+     <input id="email" type="email" class="validate" name="email">
+     <label for="email">Email</label>
+   </div>
+ </div>
+ <input type="submit" name="Enviar" value="Enviar">
+</form>
+</div>
+{%endblock%}
